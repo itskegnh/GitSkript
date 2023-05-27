@@ -34,6 +34,7 @@ on load:
     load all yaml from directory "plugins/Skript/scripts/logmill-git/items/" using the filename as the id
 
     loop the loaded yaml from directory "plugins/Skript/scripts/logmill-git/items/":
+        broadcast "Loading item %loop-value%"
         set {_id} to yaml value "id" from loop-value
         set {_name} to yaml value "name" from loop-value
         
