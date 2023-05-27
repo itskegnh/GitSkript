@@ -18,7 +18,7 @@ function create_itemtype(item : string = "barrier", id : string = "missing", nam
     set {_item} to {_item} with all flags hidden
 
     if {_description} is not "":
-        set {_desc::*} to {_description} split by "%nl%"
+        set {_desc::*} to {_description} split by nl
         set {_desc} to join {_desc::*} with "%nl%&7&o"
 
         set line 1 of lore of {_item} to "&7&o%{_desc}%"
