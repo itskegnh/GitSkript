@@ -10,47 +10,39 @@
 # Delete a Tag
 #  - delete tag "tag" of <nbt compound>
 
-
-
-function create_itemtype(item : string, id : string, name : string, nbt : string):
+function create_itemtype(item : string = "barrier", id : string = "missing", name : string = "Unnamed Item", nbt : string = "{}", description : string = ""):
     set {_nbt} to nbt compound from {_nbt}
 
     set {_item} to {_item} parsed as itemtype
     set {_item} to {_item} with nbt {_nbt}
     set {_item} to {_item} with all flags hidden
 
+    if {_description} is not "":
+        set {_desc::*} to {_description} split by "%nl%"
+        set {_desc} to join {_desc::*} with "%nl%&7&o"
+
+        set line 1 of lore of {_item} to "&7&o%{_desc}%"
+
+        
+
     set name of {_item} to "&f%{_name}%"
     
-
-
-    broadcast "creating item %{_id}%"
     set {itemtype::%{_id}%} to {_item}
 
 on load:
-    # ITEMS
-    # create_itemtype(player head, "oak_log", "Oak Log", "{SkullOwner:{Id:[I;1207148445,-290502372,-1986008042,-746691525],Properties:{textures:[{Value:""eyJ0ZXh0dXJlcyI6eyJTS0lOIjp7InVybCI6Imh0dHA6Ly90ZXh0dXJlcy5taW5lY3JhZnQubmV0L3RleHR1cmUvY2YxMzQ2MDkyYzgwZDNkYjIxN2VmZTRjOTM2OTY5MWU2MWM4YWZjMWIyODc0MWZhNTA0ODJjOTJjOWZkM2QxOCJ9fX0=""}]}}}")
-
     delete {itemtype::*}
-
     wait 1 tick
 
     load all yaml from directory "plugins/Skript/scripts/logmill-git/items/" # using the filename as the id
 
-    # loop the loaded yaml from directory "plugins/Skript/scripts/logmill-git/items/":
     loop all the currently loaded yaml files:
-        broadcast "Loading item %loop-value%"
         set {_id} to yaml value "id" from loop-value
-        broadcast "found id %{_id}%"
         set {_name} to yaml value "name" from loop-value
-        broadcast "found name %{_name}%"
         
         set {_item} to yaml value "item" from loop-value
-        broadcast "found item %{_item}%"
         set {_nbt} to yaml value "nbt" from loop-value
-        broadcast "found nbt %{_nbt}%"
 
         create_itemtype({_item}, {_id}, {_name}, {_nbt})
-        broadcast "created item %{_id}%"
 
 
         
