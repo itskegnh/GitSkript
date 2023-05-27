@@ -22,7 +22,7 @@ function create_itemtype(item : itemtype, id : string, name : string, nbt : stri
     
 
 
-
+    broadcast "creating item %{_id}%"
     set {itemtype::%{_id}%} to {_item}
 
 on load:
