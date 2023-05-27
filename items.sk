@@ -18,7 +18,7 @@ function create_itemtype(item : itemtype, id : string, name : string, nbt : stri
     set {_item} to {_item} with nbt {_nbt}
     set {_item} to {_item} with all flags hidden
 
-    set name of player's tool to "&f%{_name}%"
+    set name of {_item} to "&f%{_name}%"
     
 
 
