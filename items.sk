@@ -37,13 +37,17 @@ on load:
     loop all the currently loaded yaml files:
         broadcast "Loading item %loop-value%"
         set {_id} to yaml value "id" from loop-value
-        broadcast "found "
+        broadcast "found id %{_id}%"
         set {_name} to yaml value "name" from loop-value
+        broadcast "found name %{_name}%"
         
         set {_item} to yaml value "item" from loop-value
+        broadcast "found item %{_item}%"
         set {_nbt} to yaml value "nbt" from loop-value
+        broadcast "found nbt %{_nbt}%"
 
         create_itemtype({_item}, {_id}, {_name}, {_nbt})
+        broadcast "created item %{_id}%"
 
 
         
