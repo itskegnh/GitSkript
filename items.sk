@@ -21,7 +21,7 @@ function create_itemtype(item : string, id : string, name : string, nbt : string
         set {_desc::*} to {_description} split by "\n"
         set {_desc} to join {_desc::*} with "%nl%&7&o"
 
-        set line 1 of lore of {_item} to "&7&o%{_desc}%"
+        set lore of {_item} to "&7&o%{_desc}%"
 
         
 
