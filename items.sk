@@ -31,12 +31,13 @@ on load:
 
     delete {itemtype::*}
 
-    load all yaml from directory "plugins/Skript/scripts/logmill-git/items/" using the filename as the id
+    load all yaml from directory "plugins/Skript/scripts/logmill-git/items/" # using the filename as the id
 
-    # loop the loaded yaml from directory "plugins/Skript/scripts/logmill-git/items/":
-    loop all the currently loaded yaml files:
+    loop the loaded yaml from directory "plugins/Skript/scripts/logmill-git/items/":
+    # loop all the currently loaded yaml files:
         broadcast "Loading item %loop-value%"
         set {_id} to yaml value "id" from loop-value
+        broadcast "found "
         set {_name} to yaml value "name" from loop-value
         
         set {_item} to yaml value "item" from loop-value
