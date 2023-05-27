@@ -12,13 +12,14 @@
 
 
 
-function create_itemtype(item : itemtype, id : string, name : string, nbt : string):
-    # set {_nbt} to nbt compound from {_nbt}
+function create_itemtype(item : string, id : string, name : string, nbt : string):
+    set {_nbt} to nbt compound from {_nbt}
 
-    # set {_item} to {_item} with nbt {_nbt}
-    # set {_item} to {_item} with all flags hidden
+    set {_item} to {_item} parsed as itemtype
+    set {_item} to {_item} with nbt {_nbt}
+    set {_item} to {_item} with all flags hidden
 
-    # set name of {_item} to "&f%{_name}%"
+    set name of {_item} to "&f%{_name}%"
     
 
 
