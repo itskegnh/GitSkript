@@ -18,9 +18,6 @@ function create_itemtype(item : string, id : string, name : string, nbt : string
     set {_item} to {_item} with all flags hidden
 
     if {_description} is set:
-        replace all "\n" in {_description} with "%nl%&7&o &7&o"
-        # send "&7&o %{_desc}%" to all players
-
         set lore of {_item} to "&7&o %{_description}%"
 
     set name of {_item} to "&f%{_name}%"
