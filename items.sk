@@ -18,9 +18,8 @@ function create_itemtype(item : string, id : string, name : string, nbt : string
     set {_item} to {_item} with all flags hidden
 
     if {_description} is set:
-        set {_desc::*} to {_description} split by "\n"
-        set {_desc} to join {_desc::*} with "%nl%&7&o "
-        send "&7&o %{_desc}%" to all players
+        replace all "\n" in {_description} with "%nl%&7&o &7&o"
+        # send "&7&o %{_desc}%" to all players
 
         set lore of {_item} to "&7&o %{_desc}%"
 
