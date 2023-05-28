@@ -14,7 +14,7 @@ function get_item(id : string) :: itemtype:
     set {_item} to {itemtype::%{_id}%}
 
     set {_nbt} to nbt compound of {_item}
-    if tag "tag;unstackable" of {_nbt} is true:
+    if tag "tag;unstackable" of {_nbt} is set:
         add 1 to {unique_id::unstackable}
         set tag "tag;unstackable-unique_id" of {_nbt} to {unique_id::unstackable}
 
