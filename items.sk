@@ -37,8 +37,11 @@ function create_itemtype(item : string, id : string, name : string, nbt : string
 
     set {_nbt} to nbt compound of {_item}
 
-    set tag "tag;sell" of {_nbt} to {_sell}
-    set tag "tag;buy" of {_nbt} to {_buy}
+    if {_sell} is set:
+        set tag "tag;sell" of {_nbt} to {_sell}
+
+    if {_buy} is set:
+        set tag "tag;buy" of {_nbt} to {_buy}
     
     set {_item} to item from nbt {_nbt}
 
@@ -55,7 +58,8 @@ on load:
     delete {itemtype::*}
     wait 1 tick
 
-    load all yaml from directory "plugins/Skript/scripts/logmill-git/items/" # using the filename as the id
+    load all yaml from directory "plugins/Skript/scripts/logmill-git/items/drops/"
+    load all yaml from directory "plugins/Skript/scripts/logmill-git/items/axes/"
 
     loop all the currently loaded yaml files:
         set {_id} to yaml value "id" from loop-value
