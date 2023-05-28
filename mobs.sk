@@ -1,14 +1,14 @@
 on click:
     event-block is bee nest
-    set {_lastclicked} to tag "custom;lastclicked" of nbt compound of event-block
-    set {_lastclicked} to {_lastclicked} parsed as timespan
+    set {_lastclicked} to metadata tag "lastclicked-bee" of player
+    # set {_lastclicked} to {_lastclicked} parsed as timespan
     play sound "ui.loom.take_result" at event-block
     if difference between now and {_lastclicked} is less than 1 second:
         stop
-    send difference between now and {_lastclicked} to player
-    set tag "custom;lastclicked" of nbt compound of event-block to "%now%"
+    set metadata tag "lastclicked-bee" of player to now
     loop 5 times:
         set {_v} to vector(random number between -2 and 2, random number between -1 and 1, random number between -2 and 2)
-        spawn 1 bee at (event-block ~ {_v})
-        set {_e} to last spawned entity
-        set display name of {_e} to "&6&lBee"
+        if block at (event-block ~ {_v}) is air:
+            spawn 1 bee at (event-block ~ {_v})
+            set {_e} to last spawned entity
+            set display name of {_e} to "&6&lBee"
