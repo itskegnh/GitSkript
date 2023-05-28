@@ -39,7 +39,7 @@ on load:
 
         set {_description} to yaml value "description" from loop-value
 
-        create_itemtype({_item}, {_id}, {_name}, ({_nbt} ? "{}"), ({_description} ? ""))
+        create_itemtype({_item}, {_id}, {_name}, ({_nbt} ? "{}"), ({_description} ? "&c&oTEMPORARY DESCRIPTION."))
 
 
         
