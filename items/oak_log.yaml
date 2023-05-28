@@ -7,3 +7,5 @@ nbt: "{SkullOwner:{Id:[I;1207148445,-290502372,-1986008042,-746691525],Propertie
 
 sell-value: 5
 buy-value: 10
+
+unstackable: true

@@ -6,3 +6,5 @@ nbt: "{SkullOwner:{Id:[I;1997209006,-2108536192,-1651994542,1598371988],Properti
 
 sell-value: 2
 buy-value: 5
+
+unstackable: true

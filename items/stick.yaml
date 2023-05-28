@@ -6,3 +6,5 @@ item: stick
 
 sell-value: 1
 buy-value: 2
+
+unstackable: true
