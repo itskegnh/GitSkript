@@ -10,7 +10,7 @@
 # Delete a Tag
 #  - delete tag "tag" of <nbt compound>
 
-function create_itemtype(item : string, id : string, name : string, nbt : string = "{}", description : string):
+function create_itemtype(item : string, id : string, name : string, nbt : string = "{}", description : string, sell : number, buy : number):
     set {_nbt} to nbt compound from {_nbt}
 
     set {_item} to {_item} parsed as itemtype
@@ -21,6 +21,13 @@ function create_itemtype(item : string, id : string, name : string, nbt : string
         set lore of {_item} to "&7&o %{_description}%"
 
     set name of {_item} to "&f%{_name}%"
+
+    set {_nbt} to nbt compound of {_item}
+
+    set tag "tag;sell" of {_nbt} to {_sell}
+    set tag "tag;buy" of {_nbt} to {_buy}
+    
+    set {_item} to item from nbt {_nbt}
     
     set {itemtype::%{_id}%} to {_item}
 
@@ -39,7 +46,10 @@ on load:
 
         set {_description} to yaml value "description" from loop-value
 
-        create_itemtype({_item}, {_id}, {_name}, ({_nbt} ? "{}"), ({_description} ? "&c&oTEMPORARY DESCRIPTION."))
+        set {_sell} to yaml value "sell-value" from loop-value
+        set {_buy} to yaml value "buy-value" from loop-value
+
+        create_itemtype({_item}, {_id}, {_name}, ({_nbt} ? "{}"), ({_description} ? "&c&oTEMPORARY DESCRIPTION."), {_sell}, {_buy})
 
 
         
