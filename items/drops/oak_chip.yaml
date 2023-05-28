@@ -1,0 +1,10 @@
+id: oak_chip
+name: "Oak Chip"
+description: "A small piece of oak wood."
+
+item: oak button
+
+sell-value: 1
+buy-value: 2
+
+unstackable: false
