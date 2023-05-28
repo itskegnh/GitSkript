@@ -10,7 +10,7 @@
 # Delete a Tag
 #  - delete tag "tag" of <nbt compound>
 
-function get_item(id : string):
+function get_item(id : string) :: itemtype:
     set {_item} to {itemtype::%{_id}%}
 
     set {_nbt} to nbt compound of {_item}
